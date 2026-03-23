@@ -1,3 +1,19 @@
+"""
+data.py — PyTorch Data Pipeline for Traffic Sign Recognition
+
+What is this?
+------------
+This script handles the loading, preprocessing, and augmentation of the 
+traffic sign dataset using PyTorch's Dataset and DataLoader. It supports
+both the training set (with labels) and the test set (for submissions).
+
+Workflow:
+  1. Define TestDataset for unlabeled test images
+  2. Define base transforms (Resize 32x32, ToTensor)
+  3. Load ImageFolder for training and split into 80/20 train/val
+  4. Return DataLoaders for training, validation, and testing
+"""
+
 import os
 import torch
 from torch.utils.data import DataLoader, TensorDataset, Dataset, random_split

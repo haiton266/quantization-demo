@@ -1,3 +1,19 @@
+"""
+module.py — PyTorch Lightning System for Traffic Sign Training
+
+What is this?
+------------
+Wraps the core CNN in a LightningModule to automate training loops, 
+validation benchmarks, and optimizer configuration. It also defines the
+augmentation strategy used during backpropagation.
+
+Key Components:
+  - TrafficSignLightningModel: The main PL system
+  - Augmentation: Random rotations, affine transforms, and color jitter
+  - Loss: CrossEntropyLoss
+  - Optimization: Adam optimizer with configurable learning rate
+"""
+
 import torch
 import torch.nn as nn
 import pytorch_lightning as pl

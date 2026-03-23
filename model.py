@@ -1,3 +1,20 @@
+"""
+model.py — Lightweight Separable CNN Architecture (PyTorch)
+
+What is this?
+------------
+Defines the core neural network architecture. It uses Depthwise Separable
+Convolutions and Global Average Pooling to minimize the parameter count 
+(<200k) making it ideal for resource-constrained hardware like ESP32-S3.
+
+Architecture:
+  - Input: 3x32x32 RGB images
+  - Conv1: Standard convolution for initial feature extraction
+  - Block 1 & 2: SeparableConv2d + BatchNorm + MaxPool
+  - Global Average Pooling (GAP) instead of large Dense layers
+  - Final Linear classifier for traffic sign categories
+"""
+
 import torch
 import torch.nn as nn
 

@@ -1,0 +1,13 @@
+torch
+pytorch-lightning
+torchvision
+Pillow
+pandas
+onnx
+onnx-tf
+tensorflow
+onnxruntime
+onnx2tf
+tf_keras
+onnx_graphsurgeon
+tensorflow-model-optimization
