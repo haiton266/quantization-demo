@@ -15,6 +15,8 @@ Workflow:
 """
 
 import os
+# https://github.com/tensorflow/model-optimization/issues/1140
+os.environ['TF_USE_LEGACY_KERAS'] = "1"
 import numpy as np
 import tensorflow as tf
 from PIL import Image
@@ -22,9 +24,11 @@ import pandas as pd
 
 def test_tflite():
     # Configuration
-    model_path = "models/exports/tflite_models/lenet5_int8_quant.tflite"
+    # model_path = "models/exports/tflite_models/lenet5_int8_quant_without_qat.tflite"
+    # output_csv = "results/submission_tflite_int8_without_qat.csv"
+    model_path = "models/checkpoints_tf/lenet5_int8.tflite"
+    output_csv = "results/submission_tflite_int8_qat.csv"
     test_dir = "data/test"
-    output_csv = "results/submission_tflite_int8.csv"
     
     if not os.path.exists(model_path):
         print(f"Error: Model file {model_path} not found.")

@@ -15,15 +15,17 @@ Workflow:
   5. Compare model sizes
 """
 
-import tensorflow as tf
 import os
+# https://github.com/tensorflow/model-optimization/issues/1140
+os.environ['TF_USE_LEGACY_KERAS'] = "1"
+import tensorflow as tf
 import numpy as np
 
 # --- Paths ---
 KERAS_MODEL_PATH = "models/checkpoints_tf/best_lenet5_model.keras"
 TFLITE_OUTPUT_DIR = "models/exports/tflite_models"
 TFLITE_FLOAT_PATH = os.path.join(TFLITE_OUTPUT_DIR, "lenet5_float32.tflite")
-TFLITE_QUANT_PATH = os.path.join(TFLITE_OUTPUT_DIR, "lenet5_int8_quant.tflite")
+TFLITE_QUANT_PATH = os.path.join(TFLITE_OUTPUT_DIR, "lenet5_int8_quant_without_qat.tflite")
 
 # --- Data config (used for quantization calibration) ---
 DATA_DIR = "data/train"

@@ -11,3 +11,4 @@ onnx2tf
 tf_keras
 onnx_graphsurgeon
 tensorflow-model-optimization
+tf_keras
