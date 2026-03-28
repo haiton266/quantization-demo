@@ -15,12 +15,14 @@ Workflow:
 """
 
 import os
+# Turn on/off depends on tensorflow version
 # https://github.com/tensorflow/model-optimization/issues/1140
 os.environ['TF_USE_LEGACY_KERAS'] = "1"
+
 import numpy as np
 import tensorflow as tf
-from PIL import Image
 import pandas as pd
+from PIL import Image
 
 def test_tflite():
     # Configuration

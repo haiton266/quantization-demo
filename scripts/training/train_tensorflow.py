@@ -22,8 +22,8 @@ import os
 INPUT_SHAPE = (32, 32, 3)
 NUM_CLASSES = 10
 BATCH_SIZE = 32
-EPOCHS = 100
-LEARNING_RATE = 5e-4
+EPOCHS = 200
+LEARNING_RATE = 1e-3
 
 def get_lenet5(num_classes=10):
     """
@@ -64,7 +64,7 @@ def load_data(base_dir="data", batch_size=32):
     # Load and split dataset
     train_ds = tf.keras.utils.image_dataset_from_directory(
         train_dir,
-        validation_split=0.2,
+        validation_split=0.25,
         subset="training",
         seed=123,
         image_size=(32, 32),
@@ -74,7 +74,7 @@ def load_data(base_dir="data", batch_size=32):
 
     val_ds = tf.keras.utils.image_dataset_from_directory(
         train_dir,
-        validation_split=0.2,
+        validation_split=0.25,
         subset="validation",
         seed=123,
         image_size=(32, 32),

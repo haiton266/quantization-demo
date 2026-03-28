@@ -22,11 +22,10 @@ Dependencies:
 import os
 # https://github.com/tensorflow/model-optimization/issues/1140
 os.environ['TF_USE_LEGACY_KERAS'] = "1"
-import tempfile
 
 import tensorflow as tf
-from tensorflow.keras import layers, models, callbacks
 import tensorflow_model_optimization as tfmot
+from tensorflow.keras import layers, models, callbacks
 
 # ---------------------------------------------------------------------------
 # Hyper-parameters
@@ -34,10 +33,10 @@ import tensorflow_model_optimization as tfmot
 INPUT_SHAPE   = (32, 32, 3)
 NUM_CLASSES   = 10
 BATCH_SIZE    = 32
-EPOCHS        = 100          # Phase 1 — hard cap (EarlyStopping will fire first)
-QAT_EPOCHS    = 20           # Phase 2 — single fine-tuning epoch
-LEARNING_RATE = 5e-4
-QAT_LR        = 1e-5         # Lower LR for QAT fine-tune pass
+EPOCHS        = 140          # Phase 1 — hard cap (EarlyStopping will fire first)
+QAT_EPOCHS    = 45           # Phase 2 — single fine-tuning epoch
+LEARNING_RATE = 1e-3
+QAT_LR        = 1e-4         # Lower LR for QAT fine-tune pass
 
 # Output paths
 CHECKPOINT_DIR   = "models/checkpoints_tf"
@@ -259,7 +258,7 @@ def main():
     # Phase 1: normal training
     phase1_train(train_ds, val_ds)
 
-    # Phase 2: QAT fine-tune (1 epoch)
+    # Phase 2: QAT fine-tune
     qat_model = phase2_qat(train_ds, val_ds)
 
     # Phase 3: export quantised TFLite model

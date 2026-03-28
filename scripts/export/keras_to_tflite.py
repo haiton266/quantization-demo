@@ -16,8 +16,6 @@ Workflow:
 """
 
 import os
-# https://github.com/tensorflow/model-optimization/issues/1140
-os.environ['TF_USE_LEGACY_KERAS'] = "1"
 import tensorflow as tf
 import numpy as np
 
